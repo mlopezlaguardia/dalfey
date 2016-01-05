@@ -1,0 +1,173 @@
+<ion-view title="Producción">
+    <ion-nav-buttons side="primary">
+      <button class="button" ng-click="submit()" ui-sref="services">
+          Siguiente
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+      <form name="step2Form" ng-controller="Step2FormCtrl" novalidate>
+        
+        <!-- <div class="list">
+          <label class="item item-input">
+            <input type="tel" placeholder="Cell phone" name="cell" ng-model="data.cell">
+          </label>
+          <label class="item item-input">
+            <input type="email" placeholder="Email" name="email" ng-model="data.email">
+          </label>
+          <div class="item item-message" ng-if="step2Submitted && step2Form.email.$error.email">
+            Email address is invalid
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'A'" ng-change="selectedChoice()" required>Feller</ion-radio>
+          </div>
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'B'" ng-change="selectedChoice()" required>Forwarder</ion-radio>
+          </div>
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'C'" ng-change="selectedChoice()" required>Harvester</ion-radio>
+          </div>
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'D'" ng-change="selectedChoice()" required>Skidder</ion-radio>
+          </div> 
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'E'" ng-change="selectedChoice()" required>Topador</ion-radio>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+             <label class="item item-input item-select" style="height: 54px;">
+              <div class="input-label">
+                Maquina
+              </div>
+              <select ng-model="data.maquina">
+                <option ng-repeat="machine in machines" value="{{machine}}">{{machine}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+            <div class="item item-toggle" ng-show="choice === 'D'"> 
+              {{data.SkidderOption.key}}
+              <label class="toggle">
+                 <input type="checkbox" ng-model="data.SkidderOption.value" ng-change="updateSkidderValue()">
+                 <div class="track">
+                   <div class="handle"></div>
+                 </div>
+              </label>
+            </div>
+            <div class="item item-toggle" ng-show="choice === 'E'">          
+              {{data.TopadorOption.key}}
+              <label class="toggle">
+                 <input type="checkbox" ng-model="data.TopadorOption.value" ng-change="updateTopadorValue()">
+                 <div class="track">
+                   <div class="handle"></div>
+                 </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" ng-model="data.horaInicio" placeholder="Hora Inicio" name="HoraInicio" required>
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" ng-model="data.horaFin" placeholder="Hora Fin" name="HoraFin" min="data.horaInicio" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" ng-model="data.combInicio" placeholder="Combustible Inicio" name="CombustibleInicio" required>
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" ng-model="data.combFin" placeholder="Combustible Fin" name="CombustibleFin" max="data.combInicio" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="choice === 'D' || choice === 'E'">
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Numero de Parcela" ng-model="data.produccion.parcela" name="NumeroParcela" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="choice === 'A'">
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" placeholder="Numero de Arboles" ng-model="data.produccion.arboles" name="NumeroArboles" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="choice === 'C'">
+          <div class="col">
+            <label class="item item-input item-select">
+              <div class="input-label">
+              Tipo
+              </div>
+              <select>
+                <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+          <label class="item item-input">
+            <input type="text" placeholder="Largo" name="NumeroParcela" required>
+          </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Trozas" name="NumeroParcela" required>
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Volumen m3" name="NumeroParcela" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row" ng-show="choice === 'B'">
+          <div class="col">
+            <label class="item item-input item-select">
+              <div class="input-label">
+              Tipo
+              </div>
+              <select>
+                <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+          <label class="item item-input">
+            <input type="text" placeholder="Largo" name="NumeroParcela" required>
+          </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Extraccion" name="NumeroParcela" required>
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Camiones" name="NumeroParcela" required>
+            </label>
+          </div>
+        </div>
+
+      </form>
+    </ion-content>
+  </ion-view>

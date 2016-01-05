@@ -1,0 +1,13 @@
+/* Empty. Add your own CSS if you like */
+.item-message {
+  /*background-color: $base-background-color;*/
+  color: red !important;
+  font-size: 12px;
+  padding:5px 0px 10px 10px!important;
+  border-top: 2px solid red;
+  white-space:normal;
+}
+
+.item-custom {
+  height: 54px;
+}

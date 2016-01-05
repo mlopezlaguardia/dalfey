@@ -1,0 +1,94 @@
+<ion-view title="Operario, Turno, Puesto">
+  
+  <ion-nav-buttons side="primary">
+    <button class="button" ng-click="submit()" ui-sref="machine">
+      Siguiente
+    </button>
+  </ion-nav-buttons>
+  
+  <ion-content>
+    <form name="step1Form" ng-controller="Step1FormCtrl" novalidate>
+
+     <!--  <div class="list">
+        
+        <label class="item item-input">
+          <input type="text" placeholder="First Name" name="firstname" ng-model="data.firstname" required>
+        </label>
+        
+        <div class="item item-message" ng-if="step1Submitted && step1Form.firstname.$error.required">
+          First name is required
+        </div>
+      
+        <label class="item item-input">
+          <input type="text" placeholder="Last Name" name="lastname" ng-model="data.lastname" required>
+        </label>
+        
+        <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
+          Last name is required
+        </div>
+        
+      </div> -->
+
+      <div class="row">
+        <div class="col">
+          <label class="item item-input item-custom">
+            <i class="icon ion-calendar placeholder-icon"></i>
+            <input type="date" ng-model="data.date" required>
+          </label>
+          <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
+            Last name is required
+          </div>
+        </div>
+        <div class="col">
+          <div  class="item item-toggle">          
+            {{data.shift.key}}
+            <label class="toggle toggle-dark">
+               <input type="checkbox" ng-model="data.shift.value" ng-change="updateShiftValue()">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Operario
+            </div>
+            <select ng-model="data.operator">
+              <option ng-repeat="operator in operators" value="{{operator}}">{{operator}}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          <label class="item item-input item-select">
+          <div class="input-label">
+            Puesto
+          </div>
+          <select ng-model="data.puesto">
+            <option ng-repeat="puesto in puestos" value="{{puesto}}">{{puesto}}</option>
+          </select>
+        </label>
+        </div>
+        <div class="col">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Potrero
+            </div>
+            <select ng-model="data.potrero">
+              <option ng-repeat="potrero in potreros" value="{{potrero}}">{{potrero}}</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+    </form>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,63 @@
+<ion-view title="Verificar Ingreso">
+    <ion-nav-buttons side="primary">
+      <button class="button button-positive" ui-sref="labor" ng-click="reset()">
+        Start Over
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+      <div class="list">
+
+        <div class="item item-divider">
+          Seccion 1
+        </div>
+
+        <div class="item" ng-if="data.operator">
+          <b>Operario:</b> {{ data.operator }}
+        </div>
+        <div class="item" ng-if="data.puesto">
+          <b>Puesto:</b> {{ data.puesto }}
+        </div>
+        <div class="item" ng-if="data.potrero">
+          <b>Potrero:</b> {{ data.potrero }}
+        </div>
+        <div class="item" ng-if="data.date">
+          <b>Dia</b> {{ data.date |  date: 'dd/MM/yyyy' }}
+        </div>
+        <div class="item" ng-if="data.shift">
+          <b>Turno</b> {{ data.shift.key }}
+        </div>
+        
+        <div class="item item-divider">
+          Seccion 2
+        </div>
+
+        <div class="item" ng-if="data.maquina">
+          <b>Maquinaria</b> {{ data.maquina }}
+        </div>
+        <div class="item" ng-if="data.TopadorOption.value">
+          <b>Tarea</b> {{ data.TopadorOption.key }}
+        </div>
+        <div class="item" ng-if="data.SkidderOption.value">
+          <b>Tarea</b> {{ data.SkidderOption.key }}
+        </div>
+
+        <div class="item" ng-if="data.horaInicio">
+          <b>Hora Inicio</b> {{ data.horaInicio }}
+        </div>
+        <div class="item" ng-if="data.horaFin">
+          <b>Hora Fin</b> {{ data.horaFin }}
+        </div>
+        <div class="item" ng-if="data.combInicio">
+          <b>Combustible Inicio</b> {{ data.combInicio }}
+        </div>
+        <div class="item" ng-if="data.combFin">
+          <b>Combustible Fin </b> {{ data.combFin }}
+        </div>
+
+        <div class="item item-divider">
+          Seccion 3
+        </div>
+
+      </div>
+    </ion-content>
+  </ion-view>
