@@ -14,10 +14,29 @@ angular.module('dalfey.controllers', [])
     horaFin: "",
     combInicio: "",
     combFin: "",
-    produccion: {},
+    produccion: {
+      // parcela: "",
+      // arboles: "",
+      // c: {
+      //   tipo:"",
+      //   largo:"",
+      //   trozas:"",
+      //   volumen:"",
+      // },
+      // b: {
+      //   tipo:"",
+      //   largo:"",
+      //   extraccion:"",
+      //   camiones:"",
+      // },
+    },
+    aceite: "",
+    gasoil: "",
+    hidraulico: "",
+    radiador: "",
+    valvula:"",
     TopadorOption: { key: 'Subsolador', value: false },
     SkidderOption: { key: 'Herbicida', value: false },
-    
     //tos: false
   };
 
@@ -157,20 +176,13 @@ angular.module('dalfey.controllers', [])
 .controller('DoneCtrl', function($scope, $rootScope, $ionicHistory) {
   $scope.reset = function() {
     angular.copy({
-      firstname: '',
-      middlename: '',
-      lastname: '',
-      cell: '',
-      email: '',
-      comments: '',
       tos: false
     }, $scope.data);
-  }
+  };
 
   var validate = $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $ionicHistory.clearHistory();
   });
 
   $scope.$on('$destroy', validate);
-
 });

@@ -6,18 +6,6 @@
     </ion-nav-buttons>
     <ion-content>
       <form name="step2Form" ng-controller="Step2FormCtrl" novalidate>
-        
-        <!-- <div class="list">
-          <label class="item item-input">
-            <input type="tel" placeholder="Cell phone" name="cell" ng-model="data.cell">
-          </label>
-          <label class="item item-input">
-            <input type="email" placeholder="Email" name="email" ng-model="data.email">
-          </label>
-          <div class="item item-message" ng-if="step2Submitted && step2Form.email.$error.email">
-            Email address is invalid
-          </div>
-        </div> -->
 
         <div class="row">
           <div class="col">
@@ -99,7 +87,7 @@
         <div class="row" ng-show="choice === 'D' || choice === 'E'">
           <div class="col">
             <label class="item item-input">
-              <input type="text" placeholder="Numero de Parcela" ng-model="data.produccion.parcela" name="NumeroParcela" required>
+              <input type="text" placeholder="Numero de Parcela" ng-model="data.produccion.parcela" name="NumeroParcela">
             </label>
           </div>
         </div>
@@ -107,7 +95,7 @@
         <div class="row" ng-show="choice === 'A'">
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Numero de Arboles" ng-model="data.produccion.arboles" name="NumeroArboles" required>
+              <input type="number" placeholder="Numero de Arboles" ng-model="data.produccion.arboles" name="NumeroArboles">
             </label>
           </div>
         </div>
@@ -118,24 +106,24 @@
               <div class="input-label">
               Tipo
               </div>
-              <select>
+              <select ng-model="data.produccion.c.tipo">
                 <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
               </select>
             </label>
           </div>
           <div class="col">
           <label class="item item-input">
-            <input type="text" placeholder="Largo" name="NumeroParcela" required>
+            <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.c.largo">
           </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="text" placeholder="Trozas" name="NumeroParcela" required>
+              <input type="text" placeholder="Trozas" name="Trozas" ng-model="data.produccion.c.trozas">
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="text" placeholder="Volumen m3" name="NumeroParcela" required>
+              <input type="text" placeholder="Volumen m3" name="Volumen" ng-model="data.produccion.c.volumen">
             </label>
           </div>
         </div>
@@ -146,24 +134,24 @@
               <div class="input-label">
               Tipo
               </div>
-              <select>
+              <select ng-model="data.produccion.b.tipo">
                 <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
               </select>
             </label>
           </div>
           <div class="col">
           <label class="item item-input">
-            <input type="text" placeholder="Largo" name="NumeroParcela" required>
+            <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.b.largo">
           </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="text" placeholder="Extraccion" name="NumeroParcela" required>
+              <input type="text" placeholder="Extraccion" name="Extraccion" ng-model="data.produccion.b.extraccion">
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="text" placeholder="Camiones" name="NumeroParcela" required>
+              <input type="text" placeholder="Camiones" name="Camiones" ng-model="data.produccion.b.camiones">
             </label>
           </div>
         </div>

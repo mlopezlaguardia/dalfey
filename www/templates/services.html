@@ -9,23 +9,6 @@
       
       <form name="step3Form" ng-controller="Step3FormCtrl" novalidate>
       
-
-
-        <!-- <div class="list">
-          <label class="item item-input">
-            <textarea placeholder="Comments" name="comments" ng-model="data.comments" rows=10></textarea>
-          </label>
-          <div class="item item-checkbox">
-             <label class="checkbox">
-               <input type="checkbox" name="tos" ng-model="data.tos" ng-click="checkTos()">
-             </label>
-             Agree to Terms of Service
-          </div>
-          <div class="item item-message" ng-if="step3Submitted && step3Form.tos.$error.agree">
-            You must agree to Terms of Service
-          </div>
-        </div> -->
-
         <div class="row">
           <h3>Paradas:</h3>
         </div>
@@ -54,17 +37,17 @@
         <div class="row">  
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Aceite Motor" name="NumeroParcela" required>
+              <input type="number" placeholder="Aceite Motor" name="AceiteMotor" ng-model="data.aceite" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Gasoil" name="NumeroParcela" required>
+              <input type="number" placeholder="Gasoil" name="Gasoil" ng-model="data.gasoil" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Hidraulico" name="NumeroParcela" required>
+              <input type="number" placeholder="Hidraulico" name="Hidraulico" ng-model="data.hidraulico" required>
             </label>
           </div>
         </div>
@@ -72,17 +55,18 @@
         <div class="row">  
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Agua Radiador" name="NumeroParcela" required>
+              <input type="number" placeholder="Agua Radiador" name="AguaRadiador" ng-model="data.radiador" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Valvula" name="NumeroParcela" required>
+              <input type="number" placeholder="Valvula" name="Valvula" ng-model="data.valvula" required>
             </label>
           </div>
           <div class="col"></div>
         </div>
 
+      <!--
         <div class="row">  
           <div class="col">
             <label class="item item-input">
@@ -95,7 +79,8 @@
             </label>
           </div>
           <div class="col"></div>
-        </div>
+        </div> 
+      -->
 
       </form>
     </ion-content>

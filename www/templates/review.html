@@ -8,7 +8,7 @@
       <div class="list">
 
         <div class="item item-divider">
-          Seccion 1
+          PUESTO - OPERARIO - TURNO
         </div>
 
         <div class="item" ng-if="data.operator">
@@ -28,7 +28,7 @@
         </div>
         
         <div class="item item-divider">
-          Seccion 2
+          PRODUCCION
         </div>
 
         <div class="item" ng-if="data.maquina">
@@ -55,9 +55,25 @@
         </div>
 
         <div class="item item-divider">
-          Seccion 3
+          CONSUMO
         </div>
 
+        <div class="item" ng-if="data.aceite">
+          <b>Aceite Motor</b> {{ data.aceite }}
+        </div>
+        <div class="item" ng-if="data.gasoil">
+          <b>Gasoil</b> {{ data.gasoil }}
+        </div>
+        <div class="item" ng-if="data.hidraulico">
+          <b>Hidraulico</b> {{ data.hidraulico }}
+        </div>
+        <div class="item" ng-if="data.radiador">
+          <b>Agua Radiador</b> {{ data.radiador }}
+        </div>
+        <div class="item" ng-if="data.valvula">
+          <b>Valvula</b> {{ data.valvula }}
+        </div>
+        
       </div>
     </ion-content>
   </ion-view>
