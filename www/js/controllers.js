@@ -6,8 +6,8 @@ angular.module('dalfey.controllers', [])
     operator: "",
     puesto: "",
     potrero: "",
-    shift: { key: 'Diurno', value: false },
-    date: Date.now(),
+    shift: { key: 'Diurno', value: "" },
+    date: "",
     maquina: "",
     topskider: "",
     horaInicio: "",
@@ -175,8 +175,26 @@ angular.module('dalfey.controllers', [])
 
 .controller('DoneCtrl', function($scope, $rootScope, $ionicHistory) {
   $scope.reset = function() {
-    angular.copy({
-      tos: false
+    angular.copy({ 
+      operator: "",
+      puesto: "",
+      potrero: "",
+      shift: { key: 'Diurno', value: "" },
+      date: "",
+      maquina: "",
+      topskider: "",
+      horaInicio: "",
+      horaFin: "",
+      combInicio: "",
+      combFin: "",
+      produccion: { },
+      aceite: "",
+      gasoil: "",
+      hidraulico: "",
+      radiador: "",
+      valvula:"",
+      TopadorOption: { key: 'Subsolador', value: false },
+      SkidderOption: { key: 'Herbicida', value: false } 
     }, $scope.data);
   };
 

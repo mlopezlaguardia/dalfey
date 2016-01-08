@@ -11,3 +11,7 @@
 .item-custom {
   height: 54px;
 }
+
+.rm-padding {
+  padding: 0 !important;
+}

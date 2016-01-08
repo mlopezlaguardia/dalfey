@@ -1,7 +1,8 @@
 <ion-view title="Verificar Ingreso">
+
     <ion-nav-buttons side="primary">
-      <button class="button button-positive" ui-sref="labor" ng-click="reset()">
-        Start Over
+      <button class="button" ui-sref="labor" ng-click="reset()">
+        Finalizar
       </button>
     </ion-nav-buttons>
     <ion-content>
@@ -14,46 +15,132 @@
         <div class="item" ng-if="data.operator">
           <b>Operario:</b> {{ data.operator }}
         </div>
-        <div class="item" ng-if="data.puesto">
-          <b>Puesto:</b> {{ data.puesto }}
+
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.puesto">
+              <b>Puesto:</b> {{ data.puesto }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.potrero">
+              <b>Potrero:</b> {{ data.potrero }}
+            </div>
+          </div>
         </div>
-        <div class="item" ng-if="data.potrero">
-          <b>Potrero:</b> {{ data.potrero }}
+
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.date">
+              <b>Dia</b> {{ data.date |  date: 'dd/MM/yyyy' }}
+            </div>
+          </div>
+          <div class="col rm-padding">      
+            <div class="item" ng-if="data.shift">
+              <b>Turno</b> {{ data.shift.key }}
+            </div>
+          </div>
         </div>
-        <div class="item" ng-if="data.date">
-          <b>Dia</b> {{ data.date |  date: 'dd/MM/yyyy' }}
-        </div>
-        <div class="item" ng-if="data.shift">
-          <b>Turno</b> {{ data.shift.key }}
-        </div>
-        
+
         <div class="item item-divider">
           PRODUCCION
         </div>
 
-        <div class="item" ng-if="data.maquina">
-          <b>Maquinaria</b> {{ data.maquina }}
-        </div>
-        <div class="item" ng-if="data.TopadorOption.value">
-          <b>Tarea</b> {{ data.TopadorOption.key }}
-        </div>
-        <div class="item" ng-if="data.SkidderOption.value">
-          <b>Tarea</b> {{ data.SkidderOption.key }}
-        </div>
-
-        <div class="item" ng-if="data.horaInicio">
-          <b>Hora Inicio</b> {{ data.horaInicio }}
-        </div>
-        <div class="item" ng-if="data.horaFin">
-          <b>Hora Fin</b> {{ data.horaFin }}
-        </div>
-        <div class="item" ng-if="data.combInicio">
-          <b>Combustible Inicio</b> {{ data.combInicio }}
-        </div>
-        <div class="item" ng-if="data.combFin">
-          <b>Combustible Fin </b> {{ data.combFin }}
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.maquina">
+              <b>Maquinaria</b> {{ data.maquina }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.TopadorOption.value">
+              <b>Tarea</b> {{ data.TopadorOption.key }}
+            </div>
+            <div class="item" ng-if="data.SkidderOption.value">
+              <b>Tarea</b> {{ data.SkidderOption.key }}
+            </div>
+          </div>
         </div>
 
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.horaInicio">
+              <b>Hora Inicio</b> {{ data.horaInicio }}
+            </div>  
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.horaFin">
+              <b>Hora Fin</b> {{ data.horaFin }}
+            </div>  
+          </div>  
+        </div>
+
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.combInicio">
+              <b>Combustible Inicio</b> {{ data.combInicio }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.combFin">
+              <b>Combustible Fin </b> {{ data.combFin }}
+            </div>
+          </div>
+        </div>
+
+        <div class="item" ng-if="data.produccion.parcela">
+          <b>Numbero Parcela</b> {{ data.produccion.parcela }}
+        </div>
+
+        <div class="item" ng-if="data.produccion.arboles">
+          <b>Numbero Parcela</b> {{ data.produccion.arboles }}
+        </div>
+
+        <div class="row rm-padding" ng-if="data.produccion.c">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.c.tipo">
+              <b>Tipo</b> {{ data.produccion.c.tipo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.c.largo">
+              <b>Largo</b> {{ data.produccion.c.largo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.c.trozas">
+              <b>Trozas</b> {{ data.produccion.c.trozas }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.c.volumen">
+              <b>Volumen</b> {{ data.produccion.c.volumen }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row rm-padding" ng-if="data.produccion.b">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.b.tipo">
+              <b>Tipo</b> {{ data.produccion.b.tipo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.b.largo">
+              <b>Largo</b> {{ data.produccion.b.largo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.b.extraccion">
+              <b>Extraccion</b> {{ data.produccion.b.extraccion }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.b.camiones">
+              <b>Camiones</b> {{ data.produccion.b.camiones }}
+            </div>
+          </div>
+        </div>
         <div class="item item-divider">
           CONSUMO
         </div>
