@@ -141,26 +141,59 @@
             </div>
           </div>
         </div>
+
         <div class="item item-divider">
           CONSUMO
         </div>
 
-        <div class="item" ng-if="data.aceite">
-          <b>Aceite Motor</b> {{ data.aceite }}
-        </div>
-        <div class="item" ng-if="data.gasoil">
-          <b>Gasoil</b> {{ data.gasoil }}
-        </div>
-        <div class="item" ng-if="data.hidraulico">
-          <b>Hidraulico</b> {{ data.hidraulico }}
-        </div>
-        <div class="item" ng-if="data.radiador">
-          <b>Agua Radiador</b> {{ data.radiador }}
-        </div>
-        <div class="item" ng-if="data.valvula">
-          <b>Valvula</b> {{ data.valvula }}
+        <div class="row rm-padding" ng-if="data.produccion.b">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.aceite">
+              <b>Aceite Motor</b> {{ data.aceite }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.gasoil">
+              <b>Gasoil</b> {{ data.gasoil }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.hidraulico">
+              <b>Hidraulico</b> {{ data.hidraulico }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.radiador">
+              <b>Agua Radiador</b> {{ data.radiador }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.valvula">
+              <b>Valvula</b> {{ data.valvula }}
+            </div>
+          </div>
         </div>
         
+        <div class="item item-divider">
+          PARADAS
+        </div>
+       <!--  <div class="row rm-padding" ng-if="data.produccion.b">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.aceite">
+              <b>Aceite Motor</b> {{ data.aceite }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.gasoil">
+              <b>Gasoil</b> {{ data.gasoil }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.hidraulico">
+              <b>Hidraulico</b> {{ data.hidraulico }}
+            </div>
+          </div>
+        </div> -->
       </div>
     </ion-content>
   </ion-view>
