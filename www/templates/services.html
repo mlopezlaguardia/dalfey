@@ -16,22 +16,22 @@
         <div class="row" ng-repeat="input in inputs">  
           <div class="col col-20">
             <label class="item item-input">
-              <input type="text" placeholder="Inicio" name="NumeroParcela" required>
+              <input type="text" placeholder="Inicio" ng-model="data.stops[input.value].hinicio">
             </label>
           </div>
           <div class="col col-20">
             <label class="item item-input">
-              <input type="text" placeholder="Fin" name="NumeroParcela" required>
+              <input type="text" placeholder="Fin" ng-model="data.stops[input.value].hfin">
             </label>
           </div>
           <div class="col col-50">
             <label class="item item-input">
-              <input type="text" placeholder="Motivo" name="NumeroParcela" required>
+              <input type="text" placeholder="Motivo" ng-model="data.stops[input.value].motivo">
             </label>
           </div>
           <div class="col col-10">
             <button class="button button-balanced icon ion-plus" ng-if="$index == inputs.length - 1" ng-click="addRow()"></button>
-            <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index)"></button>
+            <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button>
           </div>
         </div>
 

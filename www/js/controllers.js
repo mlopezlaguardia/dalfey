@@ -14,22 +14,7 @@ angular.module('dalfey.controllers', [])
     horaFin: "",
     combInicio: "",
     combFin: "",
-    produccion: {
-      // parcela: "",
-      // arboles: "",
-      // c: {
-      //   tipo:"",
-      //   largo:"",
-      //   trozas:"",
-      //   volumen:"",
-      // },
-      // b: {
-      //   tipo:"",
-      //   largo:"",
-      //   extraccion:"",
-      //   camiones:"",
-      // },
-    },
+    produccion: { },
     aceite: "",
     gasoil: "",
     hidraulico: "",
@@ -37,7 +22,7 @@ angular.module('dalfey.controllers', [])
     valvula:"",
     TopadorOption: { key: 'Subsolador', value: false },
     SkidderOption: { key: 'Herbicida', value: false },
-    //tos: false
+    stops: []
   };
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -153,17 +138,35 @@ angular.module('dalfey.controllers', [])
   //   $scope.step3Form.tos.$setValidity('agree', $scope.data.tos);
   // };
 
-  $scope.inputs = [{ value: null }];
+  //TODO: put this in a function
+  $scope.inputs = [{ value: 0 }];
+  var itemsCount = $scope.data.stops.length;
+  for(i = 1; i<itemsCount; i++)
+  {
+    $scope.inputs.push({ value: i });
+  }
+  $scope.idxStops = itemsCount - 1  > 0? itemsCount - 1 : 0;
 
   $scope.addRow = function () {
+    $scope.idxStops += 1;
     $scope.inputs.push({
-      value: null
+      value: $scope.idxStops
     });
   };
 
-  $scope.removeRow = function (index) {
+  $scope.removeRow = function (index, val) {
     $scope.inputs.splice(index, 1);
+    $scope.data.stops.splice(val, 1);
+    $scope.idxStops -= 1;
+    $scope.updateInputsVal();
   };
+
+  $scope.updateInputsVal = function() {
+    angular.forEach($scope.inputs, function(input, idx) {
+       input.value = key;
+    });
+  };
+
 
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (($scope.step3Form.$invalid) && (toState.data.step > fromState.data.step))
@@ -194,7 +197,8 @@ angular.module('dalfey.controllers', [])
       radiador: "",
       valvula:"",
       TopadorOption: { key: 'Subsolador', value: false },
-      SkidderOption: { key: 'Herbicida', value: false } 
+      SkidderOption: { key: 'Herbicida', value: false },
+      stops: []
     }, $scope.data);
   };
 

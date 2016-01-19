@@ -93,7 +93,7 @@
         </div>
 
         <div class="item" ng-if="data.produccion.arboles">
-          <b>Numbero Parcela</b> {{ data.produccion.arboles }}
+          <b>Cantidad Arboles</b> {{ data.produccion.arboles }}
         </div>
 
         <div class="row rm-padding" ng-if="data.produccion.c">
@@ -146,7 +146,7 @@
           CONSUMO
         </div>
 
-        <div class="row rm-padding" ng-if="data.produccion.b">
+        <div class="row rm-padding">
           <div class="col rm-padding">
             <div class="item" ng-if="data.aceite">
               <b>Aceite Motor</b> {{ data.aceite }}
@@ -177,23 +177,25 @@
         <div class="item item-divider">
           PARADAS
         </div>
-       <!--  <div class="row rm-padding" ng-if="data.produccion.b">
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.aceite">
-              <b>Aceite Motor</b> {{ data.aceite }}
+
+        <div class="row rm-padding" ng-repeat="stop in data.stops">
+          <div class="col col-20 rm-padding">
+            <div class="item" ng-if="stop.hinicio">
+              <b>Hora Inicio</b> {{ stop.hinicio }}
+            </div>
+          </div>
+          <div class="col col-20 rm-padding">
+            <div class="item" ng-if="stop.hfin">
+              <b>Hora Fin</b> {{ stop.hfin }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.gasoil">
-              <b>Gasoil</b> {{ data.gasoil }}
+            <div class="item" ng-if="stop.motivo">
+              <b>Motivo</b> {{ stop.motivo }}
             </div>
           </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.hidraulico">
-              <b>Hidraulico</b> {{ data.hidraulico }}
-            </div>
-          </div>
-        </div> -->
+        </div>
+
       </div>
     </ion-content>
   </ion-view>
