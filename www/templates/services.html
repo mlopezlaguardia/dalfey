@@ -16,17 +16,17 @@
         <div class="row" ng-repeat="input in inputs">  
           <div class="col col-20">
             <label class="item item-input">
-              <input type="text" placeholder="Inicio" ng-model="data.stops[input.value].hinicio">
+              <input type="text" placeholder="Inicio" ng-model="stops[input.value].hinicio">
             </label>
           </div>
           <div class="col col-20">
             <label class="item item-input">
-              <input type="text" placeholder="Fin" ng-model="data.stops[input.value].hfin">
+              <input type="text" placeholder="Fin" ng-model="stops[input.value].hfin">
             </label>
           </div>
           <div class="col col-50">
             <label class="item item-input">
-              <input type="text" placeholder="Motivo" ng-model="data.stops[input.value].motivo">
+              <input type="text" placeholder="Motivo" ng-model="stops[input.value].motivo">
             </label>
           </div>
           <div class="col col-10">
@@ -38,17 +38,17 @@
         <div class="row">  
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Aceite Motor" name="AceiteMotor" ng-model="data.aceite" required>
+              <input type="number" placeholder="Aceite Motor" name="AceiteMotor" ng-model="data.services.aceite" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Gasoil" name="Gasoil" ng-model="data.gasoil" required>
+              <input type="number" placeholder="Gasoil" name="Gasoil" ng-model="data.services.gasoil" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Hidraulico" name="Hidraulico" ng-model="data.hidraulico" required>
+              <input type="number" placeholder="Hidraulico" name="Hidraulico" ng-model="data.services.hidraulico" required>
             </label>
           </div>
         </div>
@@ -56,12 +56,12 @@
         <div class="row">  
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Agua Radiador" name="AguaRadiador" ng-model="data.radiador" required>
+              <input type="number" placeholder="Agua Radiador" name="AguaRadiador" ng-model="data.services.radiador" required>
             </label>
           </div>
           <div class="col">
             <label class="item item-input">
-              <input type="number" placeholder="Valvula" name="Valvula" ng-model="data.valvula" required>
+              <input type="number" placeholder="Valvula" name="Valvula" ng-model="data.services.valvula" required>
             </label>
           </div>
           <div class="col"></div>

@@ -24,6 +24,11 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
   $ionicConfigProvider.views.maxCache(0);
 
   $stateProvider
+  .state('home', {
+    url: "/home",
+    templateUrl: "templates/home.html",
+    controller: 'HomeCtrl'
+  })
   .state('labor', {
     url: "/labor",
     data: {

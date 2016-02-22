@@ -36,8 +36,8 @@
             </div>
           </div>
           <div class="col rm-padding">      
-            <div class="item" ng-if="data.shift">
-              <b>Turno</b> {{ data.shift.key }}
+            <div class="item" ng-if="data.turno">
+              <b>Turno</b> {{ data.turno }}
             </div>
           </div>
         </div>
@@ -53,11 +53,11 @@
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.TopadorOption.value">
-              <b>Tarea</b> {{ data.TopadorOption.key }}
+            <div class="item" ng-if="data.subtarea.value">
+              <b>Tarea</b> {{ data.subtarea }}
             </div>
-            <div class="item" ng-if="data.SkidderOption.value">
-              <b>Tarea</b> {{ data.SkidderOption.key }}
+            <div class="item" ng-if="data.subtarea.value">
+              <b>Tarea</b> {{ data.subtarea }}
             </div>
           </div>
         </div>
@@ -148,28 +148,28 @@
 
         <div class="row rm-padding">
           <div class="col rm-padding">
-            <div class="item" ng-if="data.aceite">
-              <b>Aceite Motor</b> {{ data.aceite }}
+            <div class="item" ng-if="data.services.aceite">
+              <b>Aceite Motor</b> {{ data.services.aceite }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.gasoil">
-              <b>Gasoil</b> {{ data.gasoil }}
+            <div class="item" ng-if="data.services.gasoil">
+              <b>Gasoil</b> {{ data.services.gasoil }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.hidraulico">
-              <b>Hidraulico</b> {{ data.hidraulico }}
+            <div class="item" ng-if="data.services.hidraulico">
+              <b>Hidraulico</b> {{ data.services.hidraulico }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.radiador">
-              <b>Agua Radiador</b> {{ data.radiador }}
+            <div class="item" ng-if="data.services.radiador">
+              <b>Agua Radiador</b> {{ data.services.radiador }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.valvula">
-              <b>Valvula</b> {{ data.valvula }}
+            <div class="item" ng-if="data.services.valvula">
+              <b>Valvula</b> {{ data.services.valvula }}
             </div>
           </div>
         </div>
@@ -178,7 +178,7 @@
           PARADAS
         </div>
 
-        <div class="row rm-padding" ng-repeat="stop in data.stops">
+        <div class="row rm-padding" ng-repeat="stop in data.services.stops">
           <div class="col col-20 rm-padding">
             <div class="item" ng-if="stop.hinicio">
               <b>Hora Inicio</b> {{ stop.hinicio }}

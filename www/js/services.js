@@ -1,4 +1,9 @@
-angular.module('dalfey.services', [])
+angular.module('dalfey.services', ['firebase'])
+
+.factory('FirebaseService',['$firebaseArray', function($firebaseArray) {
+  var workRef =  new Firebase('https://dalfeysa.firebaseio.com/work');
+  return $firebaseArray(workRef);
+}])
 
 .factory('Storage', [function() {
 

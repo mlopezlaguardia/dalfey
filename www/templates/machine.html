@@ -9,19 +9,19 @@
 
         <div class="row">
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'A'" ng-change="selectedChoice()" required>Feller</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Feller'" ng-change="selectedChoice()" required>Feller</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'B'" ng-change="selectedChoice()" required>Forwarder</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Forwarder'" ng-change="selectedChoice()" required>Forwarder</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'C'" ng-change="selectedChoice()" required>Harvester</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Harvester'" ng-change="selectedChoice()" required>Harvester</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'D'" ng-change="selectedChoice()" required>Skidder</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Skidder'" ng-change="selectedChoice()" required>Skidder</ion-radio>
           </div> 
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'E'" ng-change="selectedChoice()" required>Topador</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Topador'" ng-change="selectedChoice()" required>Topador</ion-radio>
           </div>
         </div>
 
@@ -37,19 +37,19 @@
             </label>
           </div>
           <div class="col">
-            <div class="item item-toggle" ng-show="choice === 'D'"> 
-              {{data.SkidderOption.key}}
+            <div class="item item-toggle" ng-show="choice === 'Skidder'"> 
+              {{SkidderOption.key}}
               <label class="toggle">
-                 <input type="checkbox" ng-model="data.SkidderOption.value" ng-change="updateSkidderValue()">
+                 <input type="checkbox" ng-model="SkidderOption.value" ng-change="updateSkidderValue()">
                  <div class="track">
                    <div class="handle"></div>
                  </div>
               </label>
             </div>
-            <div class="item item-toggle" ng-show="choice === 'E'">          
-              {{data.TopadorOption.key}}
+            <div class="item item-toggle" ng-show="choice === 'Topador'">          
+              {{TopadorOption.key}}
               <label class="toggle">
-                 <input type="checkbox" ng-model="data.TopadorOption.value" ng-change="updateTopadorValue()">
+                 <input type="checkbox" ng-model="TopadorOption.value" ng-change="updateTopadorValue()">
                  <div class="track">
                    <div class="handle"></div>
                  </div>
@@ -84,7 +84,7 @@
           </div>
         </div>
 
-        <div class="row" ng-show="choice === 'D' || choice === 'E'">
+        <div class="row" ng-show="choice === 'Skidder' || choice === 'Topador'">
           <div class="col">
             <label class="item item-input">
               <input type="text" placeholder="Numero de Parcela" ng-model="data.produccion.parcela" name="NumeroParcela">
@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <div class="row" ng-show="choice === 'A'">
+        <div class="row" ng-show="choice === 'Feller'">
           <div class="col">
             <label class="item item-input">
               <input type="number" placeholder="Cantidad Arboles" ng-model="data.produccion.arboles" name="NumeroArboles">
@@ -100,7 +100,7 @@
           </div>
         </div>
 
-        <div class="row" ng-show="choice === 'C'">
+        <div class="row" ng-show="choice === 'Harvester'">
           <div class="col">
             <label class="item item-input item-select">
               <div class="input-label">
@@ -128,7 +128,7 @@
           </div>
         </div>
 
-        <div class="row" ng-show="choice === 'B'">
+        <div class="row" ng-show="choice === 'Forwarder'">
           <div class="col">
             <label class="item item-input item-select">
               <div class="input-label">

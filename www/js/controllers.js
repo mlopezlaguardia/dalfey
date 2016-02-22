@@ -1,28 +1,25 @@
 angular.module('dalfey.controllers', [])
 
+.controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout) {
+})
+
 .controller('AppCtrl', function($scope, $rootScope, $ionicLoading, $timeout) {
   $scope.hideBackButton = false;
   $scope.data = {
+    tarea: "",
+    subtarea: "",
     operator: "",
     puesto: "",
     potrero: "",
-    shift: { key: 'Diurno', value: "" },
+    turno: "",
     date: "",
     maquina: "",
-    topskider: "",
     horaInicio: "",
     horaFin: "",
     combInicio: "",
     combFin: "",
     produccion: { },
-    aceite: "",
-    gasoil: "",
-    hidraulico: "",
-    radiador: "",
-    valvula:"",
-    TopadorOption: { key: 'Subsolador', value: false },
-    SkidderOption: { key: 'Herbicida', value: false },
-    stops: []
+    services: { stops:[] },
   };
 
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -31,7 +28,6 @@ angular.module('dalfey.controllers', [])
     else 
       $scope.hideBackButton = false;
   });
-
 })
 
 .controller('Step1Ctrl', function($scope) {
@@ -44,6 +40,9 @@ angular.module('dalfey.controllers', [])
 })
 
 .controller('Step1FormCtrl', function($scope, $rootScope, $state, DataService) {
+
+  $scope.shift = { key: 'Diurno', value: "" };
+  $scope.date = "";
 
   DataService.getOperators().then(function(operators){
     $scope.operators = operators;
@@ -63,11 +62,19 @@ angular.module('dalfey.controllers', [])
   });
 
   $scope.updateShiftValue = function(){
-    if($scope.data.shift.value) {
-      $scope.data.shift.key = "Nocturno";
+    if($scope.shift.value) {
+      $scope.shift.key = "Nocturno";
+      $scope.data.turno  = $scope.shift.key;
     } else {
-      $scope.data.shift.key = "Diurno";
+      $scope.shift.key = "Diurno";
+      $scope.data.turno  = $scope.shift.key;
     }
+  };
+
+  $scope.updateDate = function(){
+    var selectedDate = new Date($scope.date);
+    $scope.data.date = selectedDate.toJSON();
+    console.log($scope.data.date);
   };
 
   $scope.$on('$destroy', validate);
@@ -84,7 +91,9 @@ angular.module('dalfey.controllers', [])
 .controller('Step2FormCtrl', function($scope, $rootScope, $state, DataService) {
 
   $scope.choice = {};
-
+  $scope.TopadorOption = { key: 'Subsolador', value: false };
+  $scope.SkidderOption = { key: 'Herbicida', value: false };
+  
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (($scope.step2Form.$invalid) && (toState.data.step > fromState.data.step))
       event.preventDefault();
@@ -99,22 +108,28 @@ angular.module('dalfey.controllers', [])
   });
   
   $scope.selectedChoice = function(){
+    $scope.data.tarea = $scope.choice;
+    $scope.data.subtarea = "";
     console.log($scope.choice);
   };
 
   $scope.updateTopadorValue = function(){
-    if($scope.data.TopadorOption.value) {
-      $scope.data.TopadorOption.key = "Vshear";
+    if($scope.TopadorOption.value) {
+      $scope.TopadorOption.key = "Vshear";
+      $scope.data.subtarea = "Vshear";
     } else {
-      $scope.data.TopadorOption.key = "Subsolador";
+      $scope.TopadorOption.key = "Subsolador";
+      $scope.data.subtarea = "Subsolador";
     }
   };
 
   $scope.updateSkidderValue = function(){
-    if($scope.data.SkidderOption.value) {
-      $scope.data.SkidderOption.key = "Arado";
+    if($scope.SkidderOption.value) {
+      $scope.SkidderOption.key = "Arado";
+      $scope.data.subtarea = "Arado";
     } else {
-      $scope.data.SkidderOption.key = "Herbicida";
+      $scope.SkidderOption.key = "Herbicida";
+      $scope.data.subtarea = "Herbicida";
     }
   };
 
@@ -137,14 +152,17 @@ angular.module('dalfey.controllers', [])
   // $scope.checkTos = function() {
   //   $scope.step3Form.tos.$setValidity('agree', $scope.data.tos);
   // };
-
+  $scope.stops = [];
   //TODO: put this in a function
   $scope.inputs = [{ value: 0 }];
-  var itemsCount = $scope.data.stops.length;
+  
+  var itemsCount = $scope.stops.length;
+  
   for(i = 1; i<itemsCount; i++)
   {
     $scope.inputs.push({ value: i });
   }
+
   $scope.idxStops = itemsCount - 1  > 0? itemsCount - 1 : 0;
 
   $scope.addRow = function () {
@@ -167,7 +185,6 @@ angular.module('dalfey.controllers', [])
     });
   };
 
-
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (($scope.step3Form.$invalid) && (toState.data.step > fromState.data.step))
       event.preventDefault();
@@ -176,29 +193,29 @@ angular.module('dalfey.controllers', [])
   $scope.$on('$destroy', validate);
 })
 
-.controller('DoneCtrl', function($scope, $rootScope, $ionicHistory) {
+.controller('DoneCtrl', function($scope, $rootScope, $ionicHistory, FirebaseService) {
+
+  console.log($scope.data);
+
+  //need to be moved
+  FirebaseService.$add($scope.data);
+
   $scope.reset = function() {
     angular.copy({ 
+      tarea: "",
+      subtarea: "",
       operator: "",
       puesto: "",
       potrero: "",
-      shift: { key: 'Diurno', value: "" },
+      turno: "",
       date: "",
       maquina: "",
-      topskider: "",
       horaInicio: "",
       horaFin: "",
       combInicio: "",
       combFin: "",
-      produccion: { },
-      aceite: "",
-      gasoil: "",
-      hidraulico: "",
-      radiador: "",
-      valvula:"",
-      TopadorOption: { key: 'Subsolador', value: false },
-      SkidderOption: { key: 'Herbicida', value: false },
-      stops: []
+      produccion: {},
+      services: { stops:[] },
     }, $scope.data);
   };
 

@@ -33,7 +33,7 @@
         <div class="col">
           <label class="item item-input item-custom">
             <i class="icon ion-calendar placeholder-icon"></i>
-            <input type="date" ng-model="data.date" required>
+            <input type="date" ng-model="date" ng-change="updateDate()" required>
           </label>
           <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
             Last name is required
@@ -41,9 +41,9 @@
         </div>
         <div class="col">
           <div  class="item item-toggle">          
-            {{data.shift.key}}
+            {{shift.key}}
             <label class="toggle toggle-dark">
-               <input type="checkbox" ng-model="data.shift.value" ng-change="updateShiftValue()">
+               <input type="checkbox" ng-model="shift.value" ng-change="updateShiftValue()">
                <div class="track">
                  <div class="handle"></div>
                </div>
