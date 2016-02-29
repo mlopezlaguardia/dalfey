@@ -1,8 +1,45 @@
 <ion-view title="Dalfey Menu">
  <ion-nav-buttons side="right">
-   <!-- Toggle right side menu -->
-   <button menu-toggle="right" class="button button-icon icon ion-navicon"></button>
+   <button menu-toggle="right" class="button button-icon icon ion-navicon" ng-click="openPopover($event)"></button>
   </ion-nav-buttons>
   <ion-content>
+    <h1 class="ui-title">Datos de Produccion:</h1>
+
+    <div class="card list empty-card-style">
+       <div class="item item-divider empty-list" ui-sref="labor()" nav-direction="forward">
+          <i class="icon ion-plus"></i> Nuevo Registro
+       </div>
+    </div>
+
+    <div class="card list card-style" ng-repeat="log in worklogs">
+      <div class="item item-avatar">
+        <h2>{{ log.maquina }} - {{log.tarea }}</h2>
+        <p>{{ log.operator }}</p>
+      </div>
+      <div class="item item-text-wrap custom-padding">
+        <div style="float: right"> 
+          Fecha: {{log.date | date: 'dd-MM-yy'}}   
+        </div>
+        <div>
+          Turno: {{ log.turno }}  
+        </div>
+      </div>
+    </div>
   </ion-content>
 </ion-view>
+
+
+<script id="menu-popover.html" type="text/ng-template">
+  <ion-popover-view>
+    <ion-content>
+      <div class="list">
+        <a class="item" ui-sref="labor()" nav-direction="forward">
+          Nuevo Registro
+        </a>
+        <a class="item">
+          Sincronizar 
+        </a>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>

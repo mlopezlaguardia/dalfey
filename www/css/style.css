@@ -15,3 +15,43 @@
 .rm-padding {
   padding: 0 !important;
 }
+
+h1.ui-title {
+  font-weight: bolder;
+  color:#999;
+  font-size: 24px;
+  text-indent: center;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+  width:  250px;
+}
+
+.empty-list {
+  border: #BCBCBC !important;
+  border-width: 4px !important;
+  border-style: dashed !important;
+  color: #BCBCBC; 
+  padding: 25px; 
+  font-weight: bold;
+  text-align: center;
+}
+
+.empty-card-style {
+  width: 600px; 
+  margin: auto; 
+  margin-top: 15px;
+  background: #E9E9E9;
+}
+
+.card-style {
+  width: 600px; 
+  margin: auto; 
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.custom-padding {
+  padding-left: 72px !important;
+  padding-right: 72px !important;
+}

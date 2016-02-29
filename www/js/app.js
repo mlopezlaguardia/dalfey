@@ -62,5 +62,5 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
     controller: 'DoneCtrl'
   });
 
-  $urlRouterProvider.otherwise("/labor");
+  $urlRouterProvider.otherwise("/home");
 });

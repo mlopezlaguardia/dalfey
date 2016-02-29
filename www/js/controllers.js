@@ -1,6 +1,37 @@
 angular.module('dalfey.controllers', [])
 
-.controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout) {
+.controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout, $ionicPopover,Storage) {
+
+  $scope.worklogs = Storage.get("workItems");
+  
+  // .fromTemplateUrl() method
+  $ionicPopover.fromTemplateUrl('menu-popover.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
+
+  $scope.openPopover = function($event) {
+    $scope.popover.show($event);
+  };
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
+  //Cleanup the popover when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.popover.remove();
+  });
+  // Execute action on hide popover
+  $scope.$on('popover.hidden', function() {
+    // Execute action
+  });
+  // Execute action on remove popover
+  $scope.$on('popover.removed', function() {
+    // Execute action
+  });
+
+
+
 })
 
 .controller('AppCtrl', function($scope, $rootScope, $ionicLoading, $timeout) {
@@ -193,14 +224,25 @@ angular.module('dalfey.controllers', [])
   $scope.$on('$destroy', validate);
 })
 
-.controller('DoneCtrl', function($scope, $rootScope, $ionicHistory, FirebaseService) {
+.controller('DoneCtrl', function($scope, $rootScope, $ionicHistory, Storage) {
 
   console.log($scope.data);
 
-  //need to be moved
-  FirebaseService.$add($scope.data);
+  // //need to be moved
+  // FirebaseService.$add($scope.data);
 
-  $scope.reset = function() {
+  $scope.saveWork = function() {
+    
+    var newItems = [$scope.data];
+    var items = Storage.get("workItems");
+    
+    if(items) {
+        newItems = items.concat(newItems);
+    } 
+    Storage.set("workItems", newItems);
+
+    console.log(newItems);
+
     angular.copy({ 
       tarea: "",
       subtarea: "",
@@ -217,6 +259,7 @@ angular.module('dalfey.controllers', [])
       produccion: {},
       services: { stops:[] },
     }, $scope.data);
+
   };
 
   var validate = $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
