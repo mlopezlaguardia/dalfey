@@ -9,19 +9,19 @@
 
         <div class="row">
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'Feller'" ng-change="selectedChoice()" required>Feller</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Feller'" required>Feller</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'Forwarder'" ng-change="selectedChoice()" required>Forwarder</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Forwarder'" required>Forwarder</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'Harvester'" ng-change="selectedChoice()" required>Harvester</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Harvester'" required>Harvester</ion-radio>
           </div>
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'Skidder'" ng-change="selectedChoice()" required>Skidder</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Skidder'" required>Skidder</ion-radio>
           </div> 
           <div class="col">
-            <ion-radio ng-model="choice" ng-value="'Topador'" ng-change="selectedChoice()" required>Topador</ion-radio>
+            <ion-radio ng-model="choice" ng-value="'Topador'" required>Topador</ion-radio>
           </div>
         </div>
 
@@ -31,9 +31,7 @@
               <div class="input-label">
                 Maquina
               </div>
-              <select ng-model="data.maquina">
-                <option ng-repeat="machine in machines" value="{{machine}}">{{machine}}</option>
-              </select>
+              <select ng-model="data.maquina" ng-options="machine as machine.name for machine in machines"></select>
             </label>
           </div>
           <div class="col">

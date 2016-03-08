@@ -64,12 +64,27 @@
               <input type="number" placeholder="Valvula" name="Valvula" ng-model="data.services.valvula" required>
             </label>
           </div>
-          <div class="col"></div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="number" placeholder="Ac. Cad." name="Ac.Cad." ng-model="data.services.accad" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">  
+          <div class="col">
+          <label class="item item-input item-select">
+            <div class="input-label">
+              Mecanico
+            </div>
+            <select ng-model="data.services.mechanic" ng-options="mechanic as mechanic.name for mechanic in mechanics"></select>
+          </label>
+          </div>
         </div>
 
       <!--
         <div class="row">  
-          <div class="col">
+          <div class="col"d
             <label class="item item-input">
               <input type="text" placeholder="Otros Descripcion" name="NumeroParcela" required>
             </label>

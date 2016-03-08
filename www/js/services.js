@@ -39,19 +39,9 @@ angular.module('dalfey.services', ['firebase'])
   return { 
     getOperators:getOperators,
     getDivisions:getDivisions,
-    getSubDivisions:getSubDivisions, 
     getMachines:getMachines, 
-    getTypes:getTypes
+    getMechanics: getMechanics
   };
-  
-  function getTypes() {
-    return $http.get('js/data.json')
-      .then(getTypesCompleted);
-
-    function getTypesCompleted(response){
-      return response.data.tipos;
-    } 
-  }
 
   function getMachines() {
     return $http.get('js/data.json')
@@ -80,12 +70,12 @@ angular.module('dalfey.services', ['firebase'])
     } 
   }
 
-  function getSubDivisions() {
+  function getMechanics() {
     return $http.get('js/data.json')
-      .then(getSubDivisionsCompleted);
+      .then(getMechanicsCompleted);
 
-    function getSubDivisionsCompleted(response){
-      return response.data.potreros;
+    function getMechanicsCompleted(response){
+      return response.data.mecanicos;
     } 
   }
 }]);

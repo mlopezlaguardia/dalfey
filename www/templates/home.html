@@ -13,8 +13,8 @@
 
     <div class="card list card-style" ng-repeat="log in worklogs">
       <div class="item item-avatar">
-        <h2>{{ log.maquina }} - {{log.tarea }}</h2>
-        <p>{{ log.operator }}</p>
+        <h2>{{ log.maquina.name }} - {{log.tarea }}</h2>
+        <p>{{ log.operator.name }}</p>
       </div>
       <div class="item item-text-wrap custom-padding">
         <div style="float: right"> 
@@ -36,7 +36,7 @@
         <a class="item" ui-sref="labor()" nav-direction="forward">
           Nuevo Registro
         </a>
-        <a class="item">
+        <a class="item" ng-click="sync()">
           Sincronizar 
         </a>
       </div>

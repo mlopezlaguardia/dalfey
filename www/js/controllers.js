@@ -10,7 +10,6 @@ angular.module('dalfey.controllers', [])
   }).then(function(popover) {
     $scope.popover = popover;
   });
-
   $scope.openPopover = function($event) {
     $scope.popover.show($event);
   };
@@ -30,8 +29,9 @@ angular.module('dalfey.controllers', [])
     // Execute action
   });
 
-
-
+  $scope.sync = function() {
+    console.log($scope.worklogs);
+  };
 })
 
 .controller('AppCtrl', function($scope, $rootScope, $ionicLoading, $timeout) {
@@ -81,15 +81,7 @@ angular.module('dalfey.controllers', [])
 
   DataService.getDivisions().then(function(puestos){
     $scope.puestos = puestos;
-  });
-
-  DataService.getSubDivisions().then(function(potreros){
-    $scope.potreros = potreros;
-  });
-
-  var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    if (($scope.step1Form.$invalid) && (toState.data.step > fromState.data.step))
-      event.preventDefault();
+    $scope.data.puesto = $scope.puestos[0];
   });
 
   $scope.updateShiftValue = function(){
@@ -108,6 +100,11 @@ angular.module('dalfey.controllers', [])
     console.log($scope.data.date);
   };
 
+  var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (($scope.step1Form.$invalid) && (toState.data.step > fromState.data.step))
+      event.preventDefault();
+  });
+
   $scope.$on('$destroy', validate);
 })
 
@@ -121,30 +118,38 @@ angular.module('dalfey.controllers', [])
 
 .controller('Step2FormCtrl', function($scope, $rootScope, $state, DataService) {
 
-  $scope.choice = {};
+  $scope.choice = { name: "" };
   $scope.TopadorOption = { key: 'Subsolador', value: false };
   $scope.SkidderOption = { key: 'Herbicida', value: false };
   
-  var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    if (($scope.step2Form.$invalid) && (toState.data.step > fromState.data.step))
-      event.preventDefault();
-  });
-
   DataService.getMachines().then(function(machines){
-    $scope.machines = machines;
-  });
-
-  DataService.getTypes().then(function(tipos){
-    $scope.tipos = tipos;
+    $scope.machinesCat = machines;
+    $scope.machines = $scope.machinesCat[0].maquinas;
   });
   
-  $scope.selectedChoice = function(){
-    $scope.data.tarea = $scope.choice;
+  $scope.$watch('choice', function(newValue, oldValue) {
+    $scope.selectedChoice(newValue);
+    $scope.updateMachines(newValue);
+    // $scope.machines = $scope.machinesCat[newValue].maquinas;
+  });
+
+  $scope.updateMachines = function(newValue) {
+    if($scope.machinesCat === undefined) return;
+    
+    $scope.machinesCat.forEach(function(category) {
+      if(category.category === newValue) {
+        $scope.machines = category.maquinas;
+      }
+    });
+  };
+  
+  $scope.selectedChoice = function(tarea) {
+    console.log(tarea)
+    $scope.data.tarea = tarea;
     $scope.data.subtarea = "";
-    console.log($scope.choice);
   };
 
-  $scope.updateTopadorValue = function(){
+  $scope.updateTopadorValue = function() {
     if($scope.TopadorOption.value) {
       $scope.TopadorOption.key = "Vshear";
       $scope.data.subtarea = "Vshear";
@@ -164,6 +169,11 @@ angular.module('dalfey.controllers', [])
     }
   };
 
+  var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    if (($scope.step2Form.$invalid) && (toState.data.step > fromState.data.step))
+      event.preventDefault();
+  });
+
   $scope.$on('$destroy', validate);
 })
 
@@ -175,11 +185,10 @@ angular.module('dalfey.controllers', [])
   };
 })
 
-.controller('Step3FormCtrl', function($scope, $rootScope, $timeout) {
+.controller('Step3FormCtrl', function($scope, $rootScope, $timeout, DataService) {
   // $timeout(function() {
   //   $scope.step3Form.tos.$setValidity('agree', $scope.data.tos);
   // });
-
   // $scope.checkTos = function() {
   //   $scope.step3Form.tos.$setValidity('agree', $scope.data.tos);
   // };
@@ -216,6 +225,10 @@ angular.module('dalfey.controllers', [])
     });
   };
 
+  DataService.getMechanics().then(function(mechanics){
+    $scope.mechanics = mechanics;
+  });
+
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (($scope.step3Form.$invalid) && (toState.data.step > fromState.data.step))
       event.preventDefault();
@@ -227,7 +240,6 @@ angular.module('dalfey.controllers', [])
 .controller('DoneCtrl', function($scope, $rootScope, $ionicHistory, Storage) {
 
   console.log($scope.data);
-
   // //need to be moved
   // FirebaseService.$add($scope.data);
 

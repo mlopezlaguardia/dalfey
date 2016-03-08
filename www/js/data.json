@@ -1,8 +1,131 @@
 {
-  "encargados": ["Jefe1", "Jefe2", "Jefe3"],
-  "operarios": ["Andres Rodriguez","Ataides","Beto","Beto Nuñez","David","Fabián","Fernando","Honorino","Hugo","Juan Carlos","Julio","Mario Villamil","Martin Nieves","Miguel","Néstor Silva","Pablo","Paolo Kisiolar","Pereda","Quintana","Rocha","Rodrigo","Rolando","Santiago","Sergio Aguilar"],
-  "puestos": ["Agroempresa","Ary Ferreira","Batoví","Britos","Bruno","Bruno y Guayase","Buena Vista","Canabaro","Canabarro","Caraguatá","Cerro Solito","Cinco Sauces","Constancia campo norte","Degues","Del Naranjo","Delgado ","Delgado y Gutierrez. ","Delgado y Santa María","Delgadoy Gutierrez.","Dutra","El Cerro ","El Cerro y HHK","El Fogón","El Palenque","El Palmito","El Rosario","El Talero","Frimosa","Gaire","GMO","Guayase","Gutierrez","HHK","HHK 2","HHK 1","Isletas","Julio Pérez","La Casona","La desnuda","La llave","La Palma","La Perdiz","La Platería ","La Serena","Las Tacuaras","Lima","Los Ceibos","Los Ministros","Los Naranjos 2","Los Silos","Mangrullo","Mendoza","Médanos","Médanos 1","Médanos 2","Palloti","Pamaral","Papazián ","Pedrozo","Picanzo","Platón","Rebollo","Roldán Pereira","San Benito","San Juan","San Patricio","Santa María","Sauzal","Solari","Tajamar","Trinidad","Villa Raquel","Vivero","Zanja Honda","Weyerhaeuser"],
-  "potreros": ["1","10","11","110","12","13","139","14","142","143","144","145","147","148","149","15","150","151","152","153","155","156","157","159","160","161","163","164","166","1992","1993","2","3","32","33","337","34","361","37","38","4","5","6","7","8","9","Agroempresa","Batoví","Brumester","Casas","Cofusa","Del Camino","El Cerro ","El Fogón","Escuela","Fogón","Fondo","Gaire","GMO","Gomez","HV 822","Mangrullo","Medio","Montenegro","norte35","Palloti","Taller","Vivero","Weyer","Weyerhaeuser"],
-  "maquinas": ["Harvester 855", "Harvester 845", "Harvester 822", "Harvester 855-2", "Feller JD", "FW2", "FW3", "Cargadora", "Skkider", "Toppador"],
-  "tipos": ["export", "aserradero", "pulpa", "otros"]
+  "maquinas": [
+      {
+        "category": "Topador", 
+        "maquinas": [{"name":"Topador", "id":8 }]
+      },
+      {
+        "category": "Skidder", 
+        "maquinas": [{"name":"Skidder", "id":7 }]
+      },
+      {
+        "category": "Forwarder", 
+        "maquinas": [{"name":"Forwarder", "id":6 }]
+      },
+      {
+        "category": "Feller", 
+        "maquinas": [{"name":"Feller", "id":5 }]
+      },
+      {
+        "category": "Harvester", 
+        "maquinas": [{"name":"Harvester 855", "id":1 }, {"name":"Harvester 845", "id":2 }, {"name":"Harvester 822", "id":3 }, {"name":"Harvester 855-2", "id":4 }]
+      }
+    ],
+  "puestos":  [
+    {"name":"Batoví", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 },
+      {"name":"7", "id": 1 },
+      {"name":"8", "id": 1 },
+      {"name":"9", "id": 1 },
+      {"name":"10", "id": 1 },
+      {"name":"11", "id": 1 },
+      {"name":"12", "id": 1 },
+      {"name":"13", "id": 1 },
+      {"name":"14", "id": 1 },
+      {"name":"15", "id": 1 }
+    ]},
+    {"name":"San Patricio", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 },
+      {"name":"7", "id": 1 },
+      {"name":"8", "id": 1 },
+      {"name":"9", "id": 1 },
+      {"name":"10", "id": 1 },
+      {"name":"11", "id": 1 },
+      {"name":"12", "id": 1 },
+      {"name":"13", "id": 1 },
+      {"name":"14", "id": 1 },
+      {"name":"15", "id": 1 }
+    ]},
+    {"name":"Médanos 1", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 },
+      {"name":"7", "id": 1 }
+    ]},
+    {"name":"Medanos 2", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 },
+      {"name":"7", "id": 1 },
+      {"name":"8", "id": 1 },
+      {"name":"9", "id": 1 },
+      {"name":"10", "id": 1 }
+    ]},
+    {"name":"El Palenque", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 },
+      {"name":"7", "id": 1 },
+      {"name":"8", "id": 1 },
+      {"name":"9", "id": 1 },
+      {"name":"10", "id": 1 }
+    ]},
+    {"name":"Gutierrez", "id": 1, "potreros": [
+      {"name":"1", "id": 1 },
+      {"name":"2", "id": 1 },
+      {"name":"3", "id": 1 },
+      {"name":"4", "id": 1 },
+      {"name":"5", "id": 1 },
+      {"name":"6", "id": 1 }
+    ]}],
+  "operarios": [
+      { "name":"Alan Del Río", "id": 1},
+      { "name":"Alejandro Quintana Silva", "id": 2},
+      { "name":"Andrés Rodríguez Pérez", "id": 3},
+      { "name":"Benito Edison Trindade", "id": 4},
+      { "name":"Beto Orlando Núñez Suárez", "id": 5},
+      { "name":"Eder Martín Nieves Silva", "id": 6},
+      { "name":"Edison Rocha Díaz", "id": 7},
+      { "name":"Fabián Ferreira Echavalette", "id": 8},
+      { "name":"Honorino Suárez Ferreira", "id": 9},
+      { "name":"Hugo Ernesto Do Canto González", "id": 10},
+      { "name":"Hugo Ricardo González López", "id": 11},
+      { "name":"Ilber Adan Ataídes González", "id": 12},
+      { "name":"Juan Carlos Borda", "id": 13},
+      { "name":"Julián Elías Issaly Videla", "id": 14},
+      { "name":"Julio Silvera Pérez", "id": 15},
+      { "name":"Kelby Martín Del Pino Pirez", "id": 16},
+      { "name":"Marcos De Oliveira", "id": 17},
+      { "name":"Mario Gabriel Villamil Lemos", "id": 18},
+      { "name":"Miguel De Orlando Rodríguez", "id": 19},
+      { "name":"Nestor David Sottolano Mila", "id": 20},
+      { "name":"Nestor Fabián Silva", "id": 21},
+      { "name":"Pablo Renato De Los Santos", "id": 22},
+      { "name":"Ricardo Texeira Silva", "id": 23},
+      { "name":"Rodolfo Gabriel González López", "id": 24},
+      { "name":"Rodrigo Fernández Crossa", "id": 25},
+      { "name":"Rolando González Porcal", "id": 26},
+      { "name":"Sergio Eduardo Aguilar Pérez", "id": 27},
+      { "name":"Sergio Gustavo Pereda Leites", "id": 28}
+    ],
+  "mecanicos": [{"name": "Mecanico 1", "id": 1}, {"name": "Mecanico 2", "id":2}, {"name": "Mecanico 3", "id":3}]
 }

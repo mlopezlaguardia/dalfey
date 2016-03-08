@@ -13,18 +13,18 @@
         </div>
 
         <div class="item" ng-if="data.operator">
-          <b>Operario:</b> {{ data.operator }}
+          <b>Operario:</b> {{ data.operator.name }}
         </div>
 
         <div class="row rm-padding">
           <div class="col rm-padding">
             <div class="item" ng-if="data.puesto">
-              <b>Puesto:</b> {{ data.puesto }}
+              <b>Puesto:</b> {{ data.puesto.name }}
             </div>
           </div>
           <div class="col rm-padding">
             <div class="item" ng-if="data.potrero">
-              <b>Potrero:</b> {{ data.potrero }}
+              <b>Potrero:</b> {{ data.potrero.name }}
             </div>
           </div>
         </div>
@@ -49,15 +49,15 @@
         <div class="row rm-padding">
           <div class="col rm-padding">
             <div class="item" ng-if="data.maquina">
-              <b>Maquinaria</b> {{ data.maquina }}
+              <b>Maquinaria</b> {{ data.maquina.name }}
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.subtarea.value">
-              <b>Tarea</b> {{ data.subtarea }}
+            <div class="item" ng-if="data.tarea.value">
+              <b>Tarea</b> {{ data.tarea }}
             </div>
             <div class="item" ng-if="data.subtarea.value">
-              <b>Tarea</b> {{ data.subtarea }}
+              <b>SubTarea</b> {{ data.subtarea }}
             </div>
           </div>
         </div>
