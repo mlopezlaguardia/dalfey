@@ -53,10 +53,10 @@
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.tarea.value">
+            <div class="item" ng-if="data.tarea">
               <b>Tarea</b> {{ data.tarea }}
             </div>
-            <div class="item" ng-if="data.subtarea.value">
+            <div class="item" ng-if="data.subtarea">
               <b>SubTarea</b> {{ data.subtarea }}
             </div>
           </div>
@@ -161,7 +161,10 @@
             <div class="item" ng-if="data.services.hidraulico">
               <b>Hidraulico</b> {{ data.services.hidraulico }}
             </div>
-          </div>
+          </div>  
+        </div>
+
+        <div class="row rm-padding">
           <div class="col rm-padding">
             <div class="item" ng-if="data.services.radiador">
               <b>Agua Radiador</b> {{ data.services.radiador }}
@@ -172,12 +175,23 @@
               <b>Valvula</b> {{ data.services.valvula }}
             </div>
           </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.services.accad">
+              <b>Ac.Cad</b> {{ data.services.accad }}
+            </div>
+          </div>
         </div>
         
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <b>Mecanico</b> {{ data.services.mechanic }}
+          </div>
+        </div>
+
         <div class="item item-divider">
           PARADAS
         </div>
-
+        
         <div class="row rm-padding" ng-repeat="stop in data.services.stops">
           <div class="col col-20 rm-padding">
             <div class="item" ng-if="stop.hinicio">
