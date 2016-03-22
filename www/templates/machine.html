@@ -17,34 +17,41 @@
           <div class="col">
             <ion-radio ng-model="choice" ng-value="'Harvester'" required>Harvester</ion-radio>
           </div>
+        </div>
+
+        <div class="row">
           <div class="col">
             <ion-radio ng-model="choice" ng-value="'Skidder'" required>Skidder</ion-radio>
           </div> 
           <div class="col">
             <ion-radio ng-model="choice" ng-value="'Topador'" required>Topador</ion-radio>
           </div>
+          <div class="col">
+            <ion-radio ng-model="choice" ng-value="'Cargadora'" required>Cargadora</ion-radio>
+          </div>
         </div>
 
         <div class="row">
           <div class="col">
-             <label class="item item-input item-select" style="height: 54px;">
+            <label class="item item-input item-select" style="height: 54px;">
               <div class="input-label">
                 Maquina
               </div>
               <select ng-model="data.maquina" ng-options="machine as machine.name for machine in machines"></select>
             </label>
           </div>
-          <div class="col">
-            <div class="item item-toggle" ng-show="choice === 'Skidder'"> 
-              {{SkidderOption.key}}
-              <label class="toggle">
-                 <input type="checkbox" ng-model="SkidderOption.value" ng-change="updateSkidderValue()">
-                 <div class="track">
-                   <div class="handle"></div>
-                 </div>
-              </label>
-            </div>
-            <div class="item item-toggle" ng-show="choice === 'Topador'">          
+          <div class="col" ng-show="choice === 'Skidder'">
+            <label class="item item-input item-select" style="height: 54px;">
+              <div class="input-label">
+                Tarea
+              </div>
+              <select ng-model="data.subtarea">
+                <option ng-repeat="task in SkidderOption" value="{{task}}">{{task}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col" ng-show="choice === 'Topador'">
+            <div class="item item-toggle">          
               {{TopadorOption.key}}
               <label class="toggle">
                  <input type="checkbox" ng-model="TopadorOption.value" ng-change="updateTopadorValue()">
@@ -124,6 +131,10 @@
               <input type="text" placeholder="Volumen m3" name="Volumen" ng-model="data.produccion.c.volumen">
             </label>
           </div>
+          <div class="col col-10">
+            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
+            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
+          </div>
         </div>
 
         <div class="row" ng-show="choice === 'Forwarder'">
@@ -152,8 +163,39 @@
               <input type="text" placeholder="Camiones" name="Camiones" ng-model="data.produccion.b.camiones">
             </label>
           </div>
+          <div class="col col-10">
+            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
+            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
+          </div>
+        </div>
+
+        <div class="row" ng-show="choice === 'Cargadora'">
+          <div class="col">
+            <label class="item item-input item-select">
+              <div class="input-label">
+              Tipo
+              </div>
+              <select ng-model="data.produccion.d.tipo">
+                <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
+              </select>
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.d.largo">
+            </label>
+          </div>
+          <div class="col">
+            <label class="item item-input">
+              <input type="text" placeholder="Camiones" name="Camiones" ng-model="data.produccion.d.camiones">
+            </label>
+          </div>
+          <div class="col col-10">
+            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
+            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
+          </div>
         </div>
 
       </form>
     </ion-content>
-  </ion-view>
+</ion-view>

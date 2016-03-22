@@ -19,6 +19,10 @@
       {
         "category": "Harvester", 
         "maquinas": [{"name":"Harvester 855", "id":1 }, {"name":"Harvester 845", "id":2 }, {"name":"Harvester 822", "id":3 }, {"name":"Harvester 855-2", "id":4 }]
+      },
+      {
+        "category": "Cargadora", 
+        "maquinas": [{"name":"Cargadora", "id":9 }]
       }
     ],
   "puestos":  [

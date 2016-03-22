@@ -142,6 +142,24 @@
           </div>
         </div>
 
+        <div class="row rm-padding" ng-if="data.produccion.d">
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.d.tipo">
+              <b>Tipo</b> {{ data.produccion.d.tipo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.d.largo">
+              <b>Largo</b> {{ data.produccion.d.largo }}
+            </div>
+          </div>
+          <div class="col rm-padding">
+            <div class="item" ng-if="data.produccion.d.camiones">
+              <b>Camiones</b> {{ data.produccion.d.camiones }}
+            </div>
+          </div>
+        </div>
+
         <div class="item item-divider">
           CONSUMO
         </div>
@@ -171,8 +189,8 @@
             </div>
           </div>
           <div class="col rm-padding">
-            <div class="item" ng-if="data.services.valvula">
-              <b>Valvula</b> {{ data.services.valvula }}
+            <div class="item" ng-if="data.services.valvulina">
+              <b>Valvulina</b> {{ data.services.valvulina }}
             </div>
           </div>
           <div class="col rm-padding">
@@ -184,7 +202,17 @@
         
         <div class="row rm-padding">
           <div class="col rm-padding">
-            <b>Mecanico</b> {{ data.services.mechanic }}
+            <div class="item">
+              <b>Sol. Mantenimiento</b> {{ data.services.solman }}
+            </div>
+          </div>
+        </div>
+        
+        <div class="row rm-padding">
+          <div class="col rm-padding">
+            <div class="item">
+              <b>Mecanico</b> {{ data.services.mechanic.name }}
+            </div>
           </div>
         </div>
 

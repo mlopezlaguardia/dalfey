@@ -1,7 +1,7 @@
 angular.module('dalfey.controllers', [])
 
 .controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout, $ionicPopover,Storage) {
-
+  $scope.hideBackButton = true;
   $scope.worklogs = Storage.get("workItems");
   
   // .fromTemplateUrl() method
@@ -120,8 +120,9 @@ angular.module('dalfey.controllers', [])
 
   $scope.choice = { name: "" };
   $scope.TopadorOption = { key: 'Subsolador', value: false };
-  $scope.SkidderOption = { key: 'Herbicida', value: false };
-  
+  $scope.SkidderOption = ['Arado','Herbicida', 'Rolo Faca'];
+  $scope.tipos = ['Aserradero','Export','Pulpa','Otros'];
+
   DataService.getMachines().then(function(machines){
     $scope.machinesCat = machines;
     $scope.machines = $scope.machinesCat[0].maquinas;
@@ -144,7 +145,6 @@ angular.module('dalfey.controllers', [])
   };
   
   $scope.selectedChoice = function(tarea) {
-    console.log(tarea)
     $scope.data.tarea = tarea;
     $scope.data.subtarea = "";
   };
@@ -156,16 +156,6 @@ angular.module('dalfey.controllers', [])
     } else {
       $scope.TopadorOption.key = "Subsolador";
       $scope.data.subtarea = "Subsolador";
-    }
-  };
-
-  $scope.updateSkidderValue = function(){
-    if($scope.SkidderOption.value) {
-      $scope.SkidderOption.key = "Arado";
-      $scope.data.subtarea = "Arado";
-    } else {
-      $scope.SkidderOption.key = "Herbicida";
-      $scope.data.subtarea = "Herbicida";
     }
   };
 
