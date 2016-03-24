@@ -60,6 +60,16 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
     },
     templateUrl: "templates/review.html",
     controller: 'DoneCtrl'
+  })
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginCtrl'
+  })
+  .state('settings', {
+    url: "/settings",
+    templateUrl: "templates/settings.html",
+    controller: 'SettingsCtrl'
   });
 
   $urlRouterProvider.otherwise("/home");

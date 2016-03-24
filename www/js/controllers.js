@@ -1,5 +1,20 @@
 angular.module('dalfey.controllers', [])
 
+.controller('LoginCtrl', function($scope, $rootScope, $ionicLoading, $timeout, Storage) {})
+.controller('SettingsCtrl', function($scope, $rootScope, $ionicLoading, $timeout, Storage) {
+  
+  $scope.user = {};
+  
+  $scope.$on('$ionicView.beforeEnter', function(){
+    $scope.hideBackButton = false;
+    $scope.user = Storage.get("currUser");
+  });
+
+  $scope.$on('$ionicView.beforeLeave', function() {
+    Storage.set("currUser", $scope.user);
+  });
+})
+
 .controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout, $ionicPopover,Storage) {
   $scope.hideBackButton = true;
   $scope.worklogs = Storage.get("workItems");
@@ -242,8 +257,6 @@ angular.module('dalfey.controllers', [])
         newItems = items.concat(newItems);
     } 
     Storage.set("workItems", newItems);
-
-    console.log(newItems);
 
     angular.copy({ 
       tarea: "",

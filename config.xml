@@ -2,11 +2,11 @@
 <widget id="app.dalfey.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>dalfey</name>
   <description>
-        An Ionic Framework and Cordova project.
-    </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
-    </author>
+    Dalfey - Recoleccion de Produccion
+  </description>
+  <author email="mlopezlaguardia@gmail.com" href="http://crushingminds.com/">
+    Mauricio Lopez, Alejandro Magnani
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>

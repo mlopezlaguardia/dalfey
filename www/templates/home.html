@@ -36,8 +36,11 @@
         <a class="item" ui-sref="labor()" nav-direction="forward">
           Nuevo Registro
         </a>
-        <a class="item" ng-click="sync()">
+        <a class="item" ng-sref="sync()" nav-direction="enter"> 
           Sincronizar 
+        </a>
+        <a class="item" ui-sref="settings()">
+          Configuracion 
         </a>
       </div>
     </ion-content>
