@@ -5,7 +5,7 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
         "port": "80"
 })
 
-.run(['$ionicPlatform', function($ionicPlatform) {
+.run(['$ionicPlatform', function($ionicPlatform, $state, Storage) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -13,6 +13,12 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+    }
+  });
+
+  $ionicPlatform.on('$locationChangeStart', function(event, next, current) {
+    if(!Storage.get("currUser")) {
+      $state.go('login');
     }
   });
 }])
