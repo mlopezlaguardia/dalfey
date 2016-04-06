@@ -1,6 +1,14 @@
 angular.module('dalfey.controllers', [])
 
-.controller('LoginCtrl', function($scope, $rootScope, $ionicLoading, $timeout, Storage) {})
+.controller('LoginCtrl', function($scope, $state, Storage) {
+  $scope.user = {};
+
+  $scope.login = function(){
+    Storage.set("currUser", $scope.user);
+    $state.go('home');
+  };
+})
+
 .controller('SettingsCtrl', function($scope, $rootScope, $ionicLoading, $timeout, Storage) {
   
   $scope.user = {};
@@ -15,7 +23,8 @@ angular.module('dalfey.controllers', [])
   });
 })
 
-.controller('HomeCtrl', function($scope, $rootScope, $ionicLoading, $timeout, $ionicPopover,Storage) {
+.controller('HomeCtrl', function($scope, $state, $rootScope, $ionicLoading, $timeout, $ionicPopover, Storage) {
+  
   $scope.hideBackButton = true;
   $scope.worklogs = Storage.get("workItems");
   

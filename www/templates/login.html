@@ -1,25 +1,10 @@
-<ion-view title="Inicio">
- <ion-header-bar>
-            <h1 class="title">Login</h1>
-            <div class="buttons">
-                <button class="button button-assertive" ng-click="hide()">Close</button>
-            </div>
-        </ion-header-bar>
-        <ion-content>
-            <form>
-                <div class="list">
-                    <label class="item item-input">
-                        <span class="input-label">Email</span>
-                        <input type="email" ng-model="user.email">
-                    </label>
-                    <label class="item item-input">
-                        <span class="input-label">Password</span>
-                        <input type="password" ng-model="user.password">
-                    </label>
-                    <label class="item">
-                        <button class="button button-block button-assertive" ng-click="login()" ng-disabled="!user.email || !user.password" type="submit">Log in</button>
-                    </label>
-                </div>
-            </form>
-        </ion-content>
+<ion-view title="Dalfey">
+ <ion-content class="padding">
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="Usuario"  ng-model="user.name">
+          </label>
+      </div>
+      <button class="button button-block" ng-click="login()">Ingresar</button>
+  </ion-content>
   </ion-view>

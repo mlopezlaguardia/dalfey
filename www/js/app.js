@@ -1,12 +1,7 @@
 angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
 
-.constant("settings", {
-        "url": "http://localhost",
-        "port": "80"
-})
-
-.run(['$ionicPlatform', function($ionicPlatform, $state, Storage) {
-  $ionicPlatform.ready(function() {
+.run(['$ionicPlatform','$rootScope', '$urlRouter', '$state', function($ionicPlatform, $rootScope, $urlRouter, $state) {
+  $ionicPlatform.ready(function($state) {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -16,11 +11,6 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
     }
   });
 
-  $ionicPlatform.on('$locationChangeStart', function(event, next, current) {
-    if(!Storage.get("currUser")) {
-      $state.go('login');
-    }
-  });
 }])
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
@@ -30,10 +20,23 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
   $ionicConfigProvider.views.maxCache(0);
 
   $stateProvider
+  .state('login', {
+    url: "/login",
+    templateUrl: "templates/login.html",
+    controller: 'LoginCtrl'
+  })
+  .state('settings', {
+    url: "/settings",
+    templateUrl: "templates/settings.html",
+    controller: 'SettingsCtrl'
+  })
   .state('home', {
     url: "/home",
     templateUrl: "templates/home.html",
-    controller: 'HomeCtrl'
+    controller: 'HomeCtrl',
+    onEnter: function($state, Storage){
+      if (!Storage.get("currUser")) $state.go('login');
+    }
   })
   .state('labor', {
     url: "/labor",
@@ -66,16 +69,6 @@ angular.module('dalfey', ['ionic', 'dalfey.controllers','dalfey.services'])
     },
     templateUrl: "templates/review.html",
     controller: 'DoneCtrl'
-  })
-  .state('login', {
-    url: "/login",
-    templateUrl: "templates/login.html",
-    controller: 'LoginCtrl'
-  })
-  .state('settings', {
-    url: "/settings",
-    templateUrl: "templates/settings.html",
-    controller: 'SettingsCtrl'
   });
 
   $urlRouterProvider.otherwise("/home");
