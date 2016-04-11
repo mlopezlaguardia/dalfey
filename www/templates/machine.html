@@ -105,94 +105,47 @@
           </div>
         </div>
 
-        <div class="row" ng-show="choice === 'Harvester'">
+        <div class="row" ng-show="choice === 'Harvester' || choice === 'Forwarder' || choice === 'Cargadora'" ng-repeat="item in data.production">
           <div class="col">
             <label class="item item-input item-select">
               <div class="input-label">
               Tipo
               </div>
-              <select ng-model="data.produccion.c.tipo">
+              <select ng-model="item.tipo" required>
                 <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
               </select>
             </label>
           </div>
           <div class="col">
           <label class="item item-input">
-            <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.c.largo">
+            <input type="text" placeholder="Largo" name="Largo" ng-model="item.largo" required>
           </label>
           </div>
-          <div class="col">
+          <div class="col"  ng-if="choice === 'Harvester'">
             <label class="item item-input">
-              <input type="text" placeholder="Trozas" name="Trozas" ng-model="data.produccion.c.trozas">
+              <input type="text" placeholder="Trozas" name="Trozas" ng-model="item.trozas" required>
             </label>
           </div>
-          <div class="col">
+          <div class="col" ng-if="choice === 'Harvester'">
             <label class="item item-input">
-              <input type="text" placeholder="Volumen m3" name="Volumen" ng-model="data.produccion.c.volumen">
+              <input type="text" placeholder="Volumen m3" name="Volumen" ng-model="item.volumen" required>
+            </label>
+          </div>
+          <div class="col" ng-if="choice === 'Forwarder'">
+            <label class="item item-input">
+              <input type="text" placeholder="Extraccion" name="Extraccion" ng-model="item.extraccion" required>
+            </label>
+          </div>
+          <div class="col" ng-if="choice === 'Forwarder' || choice === 'Cargadora'">
+            <label class="item item-input">
+              <input type="text" placeholder="Camiones" name="Camiones" ng-model="item.camiones" required>
             </label>
           </div>
           <div class="col col-10">
-            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
-            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
-          </div>
-        </div>
-
-        <div class="row" ng-show="choice === 'Forwarder'">
-          <div class="col">
-            <label class="item item-input item-select">
-              <div class="input-label">
-              Tipo
-              </div>
-              <select ng-model="data.produccion.b.tipo">
-                <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
-              </select>
-            </label>
-          </div>
-          <div class="col">
-          <label class="item item-input">
-            <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.b.largo">
-          </label>
-          </div>
-          <div class="col">
-            <label class="item item-input">
-              <input type="text" placeholder="Extraccion" name="Extraccion" ng-model="data.produccion.b.extraccion">
-            </label>
-          </div>
-          <div class="col">
-            <label class="item item-input">
-              <input type="text" placeholder="Camiones" name="Camiones" ng-model="data.produccion.b.camiones">
-            </label>
-          </div>
-          <div class="col col-10">
-            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
-            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
-          </div>
-        </div>
-
-        <div class="row" ng-show="choice === 'Cargadora'">
-          <div class="col">
-            <label class="item item-input item-select">
-              <div class="input-label">
-              Tipo
-              </div>
-              <select ng-model="data.produccion.d.tipo">
-                <option ng-repeat="tipo in tipos" value="{{tipo}}">{{tipo}}</option>
-              </select>
-            </label>
-          </div>
-          <div class="col">
-            <label class="item item-input">
-              <input type="text" placeholder="Largo" name="Largo" ng-model="data.produccion.d.largo">
-            </label>
-          </div>
-          <div class="col">
-            <label class="item item-input">
-              <input type="text" placeholder="Camiones" name="Camiones" ng-model="data.produccion.d.camiones">
-            </label>
-          </div>
-          <div class="col col-10">
-            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;"></button>
-            <!-- <button class="button button-assertive icon ion-minus" ng-if="$index != inputs.length - 1" ng-click="removeRow($index, input.value)"></button> -->
+            <button class="button button-balanced icon ion-plus" style="margin-top:-1px;" 
+              ng-if="$index == data.production.length - 1" ng-click="addItem($index)"></button>
+            <button class="button button-assertive icon ion-minus" style="margin-top:-1px;" 
+              ng-if="$index != data.production.length - 1" ng-click="removeItem($index, item)"></button>
           </div>
         </div>
 

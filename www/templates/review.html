@@ -96,66 +96,35 @@
           <b>Cantidad Arboles</b> {{ data.produccion.arboles }}
         </div>
 
-        <div class="row rm-padding" ng-if="data.produccion.c">
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.c.tipo">
-              <b>Tipo</b> {{ data.produccion.c.tipo }}
+        <div class="row rm-padding" ng-if="data.produccion" ng-repeat="item in data.production">
+          <div class="col rm-padding" ng-if="item.tipo">
+            <div class="item">
+              <b>Tipo</b> {{ item.tipo }}
             </div>
           </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.c.largo">
-              <b>Largo</b> {{ data.produccion.c.largo }}
+          <div class="col rm-padding" ng-if="item.largo">
+            <div class="item">
+              <b>Largo</b> {{ item.largo }}
             </div>
           </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.c.trozas">
-              <b>Trozas</b> {{ data.produccion.c.trozas }}
+          <div class="col rm-padding" ng-if="item.trozas">
+            <div class="item">
+              <b>Trozas</b> {{ item.trozas }}
             </div>
           </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.c.volumen">
-              <b>Volumen</b> {{ data.produccion.c.volumen }}
+          <div class="col rm-padding" ng-if="item.volumen">
+            <div class="item">
+              <b>Volumen</b> {{ item.volumen }}
             </div>
           </div>
-        </div>
-
-        <div class="row rm-padding" ng-if="data.produccion.b">
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.b.tipo">
-              <b>Tipo</b> {{ data.produccion.b.tipo }}
+          <div class="col rm-padding" ng-if="item.extraccion">
+           <div class="item">
+              <b>Extraccion</b> {{ item.extraccion }}
             </div>
           </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.b.largo">
-              <b>Largo</b> {{ data.produccion.b.largo }}
-            </div>
-          </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.b.extraccion">
-              <b>Extraccion</b> {{ data.produccion.b.extraccion }}
-            </div>
-          </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.b.camiones">
-              <b>Camiones</b> {{ data.produccion.b.camiones }}
-            </div>
-          </div>
-        </div>
-
-        <div class="row rm-padding" ng-if="data.produccion.d">
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.d.tipo">
-              <b>Tipo</b> {{ data.produccion.d.tipo }}
-            </div>
-          </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.d.largo">
-              <b>Largo</b> {{ data.produccion.d.largo }}
-            </div>
-          </div>
-          <div class="col rm-padding">
-            <div class="item" ng-if="data.produccion.d.camiones">
-              <b>Camiones</b> {{ data.produccion.d.camiones }}
+          <div class="col rm-padding" ng-if="item.camiones">
+            <div class="item">
+              <b>Camiones</b> {{ item.camiones }}
             </div>
           </div>
         </div>
@@ -238,6 +207,8 @@
           </div>
         </div>
 
+        <div class="item"></div>
       </div>
+
     </ion-content>
   </ion-view>

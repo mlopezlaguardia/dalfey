@@ -121,7 +121,6 @@ angular.module('dalfey.controllers', [])
   $scope.updateDate = function(){
     var selectedDate = new Date($scope.date);
     $scope.data.date = selectedDate.toJSON();
-    console.log($scope.data.date);
   };
 
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
@@ -155,8 +154,17 @@ angular.module('dalfey.controllers', [])
   $scope.$watch('choice', function(newValue, oldValue) {
     $scope.selectedChoice(newValue);
     $scope.updateMachines(newValue);
-    // $scope.machines = $scope.machinesCat[newValue].maquinas;
+    $scope.resetProduction();
   });
+
+  $scope.resetProduction = function(){
+    $scope.data.production = [];
+    var item = {};
+    
+    if($scope.choice === 'Harvester' || $scope.choice === 'Forwarder' || $scope.choice === 'Cargadora') {
+      $scope.data.production.push(item);
+    }
+  };
 
   $scope.updateMachines = function(newValue) {
     if($scope.machinesCat === undefined) return;
@@ -183,6 +191,15 @@ angular.module('dalfey.controllers', [])
     }
   };
 
+  $scope.addItem = function(idx) {
+    var item = {};
+    $scope.data.production.push(item);
+  };
+
+  $scope.removeItem = function(idx, item) {
+    $scope.data.production.splice(idx, 1);
+  };
+
   var validate = $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if (($scope.step2Form.$invalid) && (toState.data.step > fromState.data.step))
       event.preventDefault();
@@ -206,8 +223,10 @@ angular.module('dalfey.controllers', [])
   // $scope.checkTos = function() {
   //   $scope.step3Form.tos.$setValidity('agree', $scope.data.tos);
   // };
+
+  //TODO: change stops like production data. 
   $scope.stops = [];
-  //TODO: put this in a function
+  
   $scope.inputs = [{ value: 0 }];
   
   var itemsCount = $scope.stops.length;
@@ -253,18 +272,20 @@ angular.module('dalfey.controllers', [])
 
 .controller('DoneCtrl', function($scope, $rootScope, $ionicHistory, Storage) {
 
-  console.log($scope.data);
   // //need to be moved
   // FirebaseService.$add($scope.data);
 
   $scope.saveWork = function() {
     
+    $scope.data.sync = false;
+
     var newItems = [$scope.data];
     var items = Storage.get("workItems");
     
     if(items) {
         newItems = items.concat(newItems);
     } 
+
     Storage.set("workItems", newItems);
 
     angular.copy({ 

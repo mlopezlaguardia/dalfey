@@ -9,41 +9,21 @@
   <ion-content>
     <form name="step1Form" ng-controller="Step1FormCtrl" novalidate>
 
-     <!--  <div class="list">
-        
-        <label class="item item-input">
-          <input type="text" placeholder="First Name" name="firstname" ng-model="data.firstname" required>
-        </label>
-        
-        <div class="item item-message" ng-if="step1Submitted && step1Form.firstname.$error.required">
-          First name is required
-        </div>
-      
-        <label class="item item-input">
-          <input type="text" placeholder="Last Name" name="lastname" ng-model="data.lastname" required>
-        </label>
-        
-        <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
-          Last name is required
-        </div>
-        
-      </div> -->
-
       <div class="row">
         <div class="col">
           <label class="item item-input item-custom">
             <i class="icon ion-calendar placeholder-icon"></i>
             <input type="date" ng-model="date" ng-change="updateDate()" required>
           </label>
-          <div class="item item-message" ng-if="step1Submitted && step1Form.lastname.$error.required">
-            Last name is required
+          <div class="item item-message" ng-if="step1Submitted && step1Form.date.$error.required">
+            Por favor ingrese fecha. 
           </div>
         </div>
         <div class="col">
           <div  class="item item-toggle">          
             {{shift.key}}
             <label class="toggle toggle-dark">
-               <input type="checkbox" ng-model="shift.value" ng-change="updateShiftValue()">
+               <input type="checkbox" ng-model="shift.value" ng-change="updateShiftValue()" required>
                <div class="track">
                  <div class="handle"></div>
                </div>
@@ -58,8 +38,11 @@
             <div class="input-label">
               Operario
             </div>
-            <select ng-model="data.operator" ng-options="operator as operator.name for operator in operators"></select>
+            <select ng-model="data.operator" ng-options="operator as operator.name for operator in operators" required></select>
           </label>
+           <div class="item item-message" ng-if="step1Submitted && step1Form.operator.$error.required">
+            Por favor ingrese fecha. 
+          </div>
         </div>
       </div>
       
@@ -69,7 +52,7 @@
             <div class="input-label">
               Puesto
             </div>
-            <select ng-model="data.puesto" ng-options="puesto as puesto.name for puesto in puestos"></select>
+            <select ng-model="data.puesto" ng-options="puesto as puesto.name for puesto in puestos" required></select>
           </label>
         </div>
         <div class="col">
@@ -77,7 +60,7 @@
             <div class="input-label">
               Potrero
             </div>
-            <select ng-model="data.potrero" ng-options="potrero as potrero.name for potrero in data.puesto.potreros"></select>
+            <select ng-model="data.potrero" ng-options="potrero as potrero.name for potrero in data.puesto.potreros" required></select>
           </label>
         </div>
       </div>

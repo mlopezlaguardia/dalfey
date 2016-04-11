@@ -1,10 +1,10 @@
 /* Empty. Add your own CSS if you like */
 .item-message {
-  /*background-color: $base-background-color;*/
-  color: red !important;
+  background-color: $base-background-color;
+  color: $assertive !important;
   font-size: 12px;
   padding:5px 0px 10px 10px!important;
-  border-top: 2px solid red;
+  border-top: 2px solid $assertive;
   white-space:normal;
 }
 
